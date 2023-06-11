@@ -1,0 +1,32 @@
+@font-face {
+    font-family: roboto-black;
+    src: url('./static/RobotoSerif-Black.ttf');
+  }
+  @font-face {
+    font-family: roboto-bold;
+    src: url('./static/RobotoSerif-Bold.ttf');
+  }
+  @font-face {
+    font-family: roboto-extrabold;
+    src: url('./static/RobotoSerif-ExtraBold.ttf');
+  }
+  @font-face {
+    font-family: roboto-medium;
+    src: url('./static/RobotoSerif-Medium.ttf');
+  }
+  @font-face {
+    font-family: roboto-light;
+    src: url('./static/RobotoSerif-Light.ttf');
+  }
+  @font-face {
+    font-family: roboto-regular;
+    src: url('./static/RobotoSerif-Regular.ttf');
+  }
+  @font-face {
+    font-family: roboto-extralight;
+    src: url('./static/RobotoSerif-ExtraLight.ttf');
+  }
+
+  
+
+  

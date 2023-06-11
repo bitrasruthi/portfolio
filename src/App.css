@@ -1,0 +1,52 @@
+#root {
+  min-width: 2280px;
+  margin: 0 auto;
+  text-align: center;
+  
+}
+
+
+
+.animation{
+  display: block;
+
+}
+
+.aniamtion_layer{
+  background-position: bottom center;
+  background-size: auto 1038px;
+  background-repeat: repeat-x;
+  width:100%;
+  position:absolute;
+  height: 1000px;
+}
+
+.aniamtion_layer .parallax{
+  position: fixed;
+}
+
+#layer1{
+  background-image: url('../public/images/layer1.png');
+}
+#layer2{
+  background-image: url('../public/images/layer2.png');
+}
+#layer3{
+  background-image: url('../public/images/layer3.png');
+}
+#layer4{
+  background-image: url('../public/images/layer4.png');
+}
+#layer5{
+  background-image: url('../public/images/layer5.png');
+}
+#layer6{
+  background-image: url('../public/images/layer6.png');
+}
+#layer7{
+  background-image: url('../public/images/layer7.png');
+}
+
+#bg{
+  background-image: url('../public/images/bg.png');
+}
