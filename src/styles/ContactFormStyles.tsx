@@ -1,11 +1,25 @@
 import { makeStyles } from "@mui/styles";
 export const ContactFormStyle = makeStyles<any>((theme) => ({
   root: {
+    " & .box-container": {
+      overflow: "hidden",
+      marginTop: 50,
+      width: "80%",
+    },
+    "& .watermark": {
+      color: "white",
+      textTransform: "capitalize !important",
+      opacity: "1%",
+      position: "absolute",
+      right: "35%",
+      bottom: "5%",
+      fontSize: 50,
+    },
     "& .field-label": {
       fontSize: 12,
       fontFamily: "roboto-regular !important",
-      marginTop: 10,
-      marginBottom: 5,
+      marginTop: 20,
+      marginBottom: 10,
     },
     "& .main-text": {
       fontSize: 25,
@@ -13,8 +27,8 @@ export const ContactFormStyle = makeStyles<any>((theme) => ({
       textTransform: "none",
     },
     "& .sub-text": {
-      fontSize: 20,
-      fontFamily: "roboto-regular",
+      fontSize: 18,
+      fontFamily: "roboto-bold",
       textTransform: "none",
     },
     "& .mini-text": {
@@ -29,6 +43,9 @@ export const ContactFormStyle = makeStyles<any>((theme) => ({
       "& .MuiFormHelperText-root.Mui-error": {
         fontSize: 10,
         textTransform: "none",
+        position: "absolute",
+        bottom: -20,
+        right: 0,
       },
 
       "& .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline": {
@@ -52,13 +69,12 @@ export const ContactFormStyle = makeStyles<any>((theme) => ({
 
     "& .send-btn": {
       cursor: "pointer",
-      marginLeft: 50,
-      marginTop: 80,
+      marginTop: 110,
       color: "white",
       width: 100,
       height: 100,
       "&:hover": {
-        background: "transparent",
+        background: "transparent !important",
       },
     },
   },

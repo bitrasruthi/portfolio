@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
+import React, { CSSProperties, useRef } from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { Typography, TextField, Button, Box } from "@mui/material";
+import { Typography, TextField, Button, Box, Grid } from "@mui/material";
 import emailjs from "@emailjs/browser";
-import drop from "../../public/images/paper-plane.png";
+import paperPlane from "../../public/images/paper-plane.png";
 import { ContactFormStyle } from "../styles/ContactFormStyles";
-import useSnackbarService from "./snackBar";
+import useSnackbarService from "./SnackBar";
 
 export const contactInitialValues = {
   name: "",
@@ -32,12 +32,12 @@ const ContactForm = () => {
   const form = useRef<HTMLFormElement>(null);
   const classes = ContactFormStyle();
   const { catchErrorSnackbar, catchSuccessSnackbar } = useSnackbarService();
+  let [loading, setLoading] = React.useState(false);
 
   const {
     handleSubmit,
     handleBlur,
     handleChange,
-    setFieldValue,
     touched,
     values,
     errors,
@@ -45,13 +45,22 @@ const ContactForm = () => {
   } = useFormik({
     initialValues: contactInitialValues,
     validationSchema: contactValidationSchema,
-    onSubmit: (values, resetForm) => {
-      sendEmail();
+    onSubmit: (values) => {
+      if (values) {
+        sendEmail();
+      }
     },
   });
 
+  const [isUp, setIsUp] = React.useState(false);
+
+  const handleHover = () => {
+    setIsUp(!isUp);
+  };
+
   const sendEmail = () => {
     if (form.current) {
+      setLoading(true);
       emailjs
         .sendForm(
           "service_k408ils",
@@ -62,12 +71,15 @@ const ContactForm = () => {
         .then(
           (result) => {
             catchSuccessSnackbar("Thanks for your message!");
+            setLoading(false);
             resetForm();
           },
           (error) => {
             catchErrorSnackbar("Something went wrong!");
+            setLoading(false);
           }
         );
+      setLoading(false);
     }
   };
 
@@ -85,42 +97,37 @@ const ContactForm = () => {
     };
   }, []);
 
-  React.useEffect(() => {});
-
   return (
     <Box
       className={classes.root}
       ref={formRef}
       onClick={(e) => e.stopPropagation()}
     >
-      <form ref={form} onSubmit={handleSubmit}>
-        <Box display={"block"} justifyContent={"space-between"}>
-          <Box mb={3}>
-            <Typography className="main-text">
-              Got a Web-Related question, a Brilliant Idea!
-            </Typography>
-            <Typography className="sub-text">
-              or just want to say{" "}
-              <span
-                style={{
-                  background: "linear-gradient(to right, #C72A60, #9136A2)",
+      <Typography className="roboto-bold watermark">Contact</Typography>
+      <Box className="box-container">
+        <form ref={form} onSubmit={handleSubmit}>
+          <Grid container columnSpacing={2}>
+            <Grid item xl={12} pt={10}>
+              <Typography className="main-text">
+                Got a Web-Related Question,
+              </Typography>
+              <Typography className="main-text">A Brilliant Idea!</Typography>
+              <Typography className="sub-text">
+                or just want to say{" "}
+                <span
+                  style={{
+                    background: "linear-gradient(to right, #FD4284, #FF9A8C)",
 
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Hi !
-              </span>
-            </Typography>
-            <Typography className="mini-text">
-              With a sprinkle of HTML - A dash of CSS - And a pinch of
-              JavaScript - Let's build something web-tastic!
-              <br />{" "}
-              <span style={{ fontFamily: "roboto-bold" }}>Drop me a line!</span>
-            </Typography>
-          </Box>
-          <Box display={"flex"}>
-            <Box display={"block"}>
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  Hi !
+                </span>
+              </Typography>
+              <Typography className="main-text">Drop me a line!</Typography>
+            </Grid>
+            <Grid item xl={5}>
               <Typography className="field-label">Name</Typography>
               <TextField
                 size="small"
@@ -161,22 +168,24 @@ const ContactForm = () => {
                 error={touched.message && Boolean(errors.message)}
                 helperText={touched.message && errors.message}
                 className="input-field"
+                sx={{ mb: 5 }}
               />
-            </Box>
-            <br />
-            <Button
-              disableRipple
-              type="submit"
-              className="send-btn"
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-            >
-              <img src={drop} width={50} height={50} />
-            </Button>
-          </Box>
-        </Box>
-      </form>
+            </Grid>
+            <Grid item xl={7}>
+              <Button
+                disableRipple
+                type="submit"
+                className="send-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                <img src={paperPlane} width={40} height={40} />
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
+      </Box>
     </Box>
   );
 };

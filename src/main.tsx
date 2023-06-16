@@ -2,8 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { styled } from "@mui/material";
+import { Box, ThemeProvider, styled } from "@mui/material";
 import { SnackbarProvider } from "notistack";
+import theme from "./styles/theme.tsx";
+import { BrowserRouter, Router } from "react-router-dom";
 
 const StyledSnackbarProvider = styled(SnackbarProvider)`
   &.SnackbarItem-variantSuccess {
@@ -18,15 +20,31 @@ const StyledSnackbarProvider = styled(SnackbarProvider)`
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <StyledSnackbarProvider
-      autoHideDuration={3000}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      maxSnack={10}
-    >
-      <App />
-    </StyledSnackbarProvider>
+    <ThemeProvider theme={theme}>
+      <StyledSnackbarProvider
+        autoHideDuration={3000}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        maxSnack={10}
+      >
+        <BrowserRouter>
+          <Box
+            sx={{
+              width: "100%",
+              height: " 100%",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundImage: "url('../public/images/planet.jpg') !important",
+              position: "absolute",
+              zIndex: -1111,
+            }}
+          >
+            <App />
+          </Box>
+        </BrowserRouter>
+      </StyledSnackbarProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
