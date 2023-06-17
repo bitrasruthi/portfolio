@@ -1,12 +1,11 @@
 {
-  "homepage": "https://bitrasruthi.github.io/portfolio",
+  "homepage": "https://bitrasruthi.github.io/portfolio/",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "predeploy": "yarn run build",
+    "build": "vite build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
