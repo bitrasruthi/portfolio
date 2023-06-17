@@ -46,7 +46,7 @@ const Header: React.FC<Props> = ({ parallaxRef, page }) => {
   };
 
   const handleTitleClick = (name: string) => {
-    const newPath = `/#${name.toLowerCase()}`;
+    const newPath = `portfolio/#${name.toLowerCase()}`;
     history(newPath);
   };
 
