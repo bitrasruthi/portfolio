@@ -4,17 +4,14 @@ import {
   Box,
   Button,
   Container,
-  IconButton,
   Menu,
   MenuItem,
   Toolbar,
-  Tooltip,
   Typography,
   useMediaQuery,
 } from "@mui/material";
 import React from "react";
 import { HeaderStyle } from "../styles/HeaderStyle";
-import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 import saucer from "../../public/images/saucer.png";
 
@@ -30,13 +27,12 @@ interface Props {
   page: number;
 }
 const Header: React.FC<Props> = ({ parallaxRef, page }) => {
-  const [colors, setColors] = React.useState([]);
   const matches = useMediaQuery(
     (_theme: any) => _theme?.breakpoints?.up("lg") ?? "1280"
   );
+
   const classes = HeaderStyle();
   const history = useNavigate();
-
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -49,33 +45,12 @@ const Header: React.FC<Props> = ({ parallaxRef, page }) => {
     setAnchorElNav(null);
   };
 
-  const handleTitleClick = (scroll: number) => {
-    const path = `/#${titles[scroll - 1].name.toLowerCase()}`;
-    console.log(path);
-
-    history(path);
-  };
-
-  const generateRandomColors = () => {
-    const getRandomColor = () => {
-      const letters = "0123456789ABCDEF";
-      let color = "#";
-      for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
-    };
-
-    const color1 = getRandomColor();
-    const color2 = getRandomColor();
-
-    const gradientColors: any = [color1, color2];
-    setColors(gradientColors);
+  const handleTitleClick = (name: string) => {
+    const newPath = `/#${name.toLowerCase()}`;
+    history(newPath);
   };
 
   const scroll = (to: number) => {
-    console.log(parallaxRef.current);
-
     if (parallaxRef.current) {
       parallaxRef.current.scrollTo(to);
     }
@@ -91,6 +66,7 @@ const Header: React.FC<Props> = ({ parallaxRef, page }) => {
             onClick={(e) => {
               scroll(0);
               e.stopPropagation();
+              handleTitleClick("");
             }}
           >
             <Avatar className="saucer-img" src={saucer} />
@@ -105,7 +81,7 @@ const Header: React.FC<Props> = ({ parallaxRef, page }) => {
             <Box
               className="tool-bar"
               sx={{
-                display: { xs: "flex", md: "none" },
+                display: { xs: "flex", lg: "none" },
               }}
             >
               <Avatar
@@ -128,8 +104,13 @@ const Header: React.FC<Props> = ({ parallaxRef, page }) => {
                 open={Boolean(anchorElNav)}
                 onClose={handleCloseNavMenu}
                 sx={{
-                  display: { xs: "block", md: "none" },
+                  display: { xs: "block", lg: "none" },
                   background: "transparent",
+                }}
+                PaperProps={{
+                  style: {
+                    width: 350,
+                  },
                 }}
               >
                 {titles.map((page) => (
@@ -150,7 +131,7 @@ const Header: React.FC<Props> = ({ parallaxRef, page }) => {
             <Box
               className="web-box"
               sx={{
-                display: { xs: "none", md: "flex" },
+                display: { xs: "none", lg: "flex" },
               }}
             >
               {titles?.map(
@@ -160,8 +141,8 @@ const Header: React.FC<Props> = ({ parallaxRef, page }) => {
                       className="title-name"
                       key={page?.name}
                       onClick={() => {
-                        handleTitleClick(page?.scroll);
                         scroll(page?.scroll);
+                        handleTitleClick(page?.name);
                       }}
                       sx={{
                         my: 2,

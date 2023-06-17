@@ -50,5 +50,10 @@ export const PagesStyle = makeStyles<any>((theme) => ({
         "linear-gradient(to right,rgba(131,58,180,1) 50%, rgba(253,29,29,1) 100%)",
       opacity: 0,
     },
+    [theme.breakpoints.down("lg")]: {
+      "& .slopeBegin": {
+        clipPath: "polygon(20% 0, 80% 0, 80% 100%, 0% 100%)",
+      },
+    },
   },
 }));

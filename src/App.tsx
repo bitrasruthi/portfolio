@@ -1,11 +1,9 @@
-import "./App.css";
 import React, { useRef, CSSProperties } from "react";
 import { Parallax, IParallax } from "@react-spring/parallax";
-import { Box, Typography, useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import RingLoader from "react-spinners/RingLoader";
 import ContactForm from "./components/ContactForm";
 import Page from "./components/Pages";
-import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import TechTools from "./components/TechTools";
 import Intro from "./components/Intro";
 import MyWork from "./components/MyWork";
@@ -26,24 +24,7 @@ function App() {
   const matches = useMediaQuery(
     (_theme: any) => _theme?.breakpoints?.down("lg") ?? "600"
   );
-  const { loading, setLoading, color, setColor, isScrolled, setIsScrolled } =
-    useCommonStates();
-
-  const scroll = (to: number) => {
-    if (parallax.current) {
-      parallax.current.scrollTo(to);
-    }
-  };
-
-  React.useEffect(() => {
-    window.addEventListener("load", () => {
-      setLoading(false);
-    });
-  }, []);
-
-  React.useEffect(() => {
-    if (isScrolled && isScrolled === 3) () => scroll(isScrolled);
-  }, [isScrolled]);
+  const { loading, setLoading, color, setColor } = useCommonStates();
 
   window.addEventListener("load", () => {
     setLoading(false);
@@ -119,10 +100,10 @@ function App() {
               offset={3}
               gradient="purple"
               label={
-                <Box>
+                <>
                   <Header parallaxRef={parallax} page={4} />
                   <ContactForm />
-                </Box>
+                </>
               }
             />
           </Parallax>

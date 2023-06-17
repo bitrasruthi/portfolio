@@ -59,6 +59,22 @@ export const TechToolsStyle = makeStyles<any>((theme) => ({
     "& .title-text": {
       marginTop: 15,
     },
+    [theme.breakpoints.down("lg")]: {
+      " & .box-container": {
+        left: 0,
+        padding: 0,
+        top: "15%",
+        width: "100%",
+        overFlow: "hidden",
+      },
+      "& .tool-box": {
+        marginTop: 5,
+      },
+      "& .watermark": {
+        right: "5%",
+        fontSize: 30,
+      },
+    },
   },
   customTooltip: {
     // background: "linear-gradient(to right, SlateBlue 50%, #20232f 50%)",

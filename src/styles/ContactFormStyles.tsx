@@ -3,7 +3,7 @@ export const ContactFormStyle = makeStyles<any>((theme) => ({
   root: {
     " & .box-container": {
       overflow: "hidden",
-      marginTop: 50,
+      marginTop: "5vh",
       width: "80%",
     },
     "& .watermark": {
@@ -31,13 +31,6 @@ export const ContactFormStyle = makeStyles<any>((theme) => ({
       fontFamily: "roboto-bold",
       textTransform: "none",
     },
-    "& .mini-text": {
-      marginTop: 15,
-      textTransform: "none",
-      fontSize: 12,
-      fontFamily: "roboto-regular",
-    },
-
     "& .input-field": {
       width: 305,
       "& .MuiFormHelperText-root.Mui-error": {
@@ -66,7 +59,6 @@ export const ContactFormStyle = makeStyles<any>((theme) => ({
         },
       },
     },
-
     "& .send-btn": {
       cursor: "pointer",
       marginTop: 110,
@@ -75,6 +67,24 @@ export const ContactFormStyle = makeStyles<any>((theme) => ({
       height: 100,
       "&:hover": {
         background: "transparent !important",
+      },
+    },
+    [theme.breakpoints.down("lg")]: {
+      "& .watermark": {
+        right: "5%",
+        fontSize: 30,
+      },
+      " & .box-container": {
+        width: "120%",
+      },
+      "& .main-text": {
+        fontSize: 20,
+      },
+      "& .sub-text": {
+        fontSize: 15,
+      },
+      "& .send-btn": {
+        marginTop: 20,
       },
     },
   },

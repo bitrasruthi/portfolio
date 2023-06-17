@@ -1,7 +1,14 @@
-import React, { CSSProperties, useRef } from "react";
+import React, { useRef } from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { Typography, TextField, Button, Box, Grid } from "@mui/material";
+import {
+  Typography,
+  TextField,
+  Button,
+  Box,
+  Grid,
+  useMediaQuery,
+} from "@mui/material";
 import emailjs from "@emailjs/browser";
 import paperPlane from "../../public/images/paper-plane.png";
 import { ContactFormStyle } from "../styles/ContactFormStyles";
@@ -32,7 +39,9 @@ const ContactForm = () => {
   const form = useRef<HTMLFormElement>(null);
   const classes = ContactFormStyle();
   const { catchErrorSnackbar, catchSuccessSnackbar } = useSnackbarService();
-  let [loading, setLoading] = React.useState(false);
+  const matches = useMediaQuery(
+    (_theme: any) => _theme?.breakpoints?.down("lg") ?? "600"
+  );
 
   const {
     handleSubmit,
@@ -52,34 +61,24 @@ const ContactForm = () => {
     },
   });
 
-  const [isUp, setIsUp] = React.useState(false);
-
-  const handleHover = () => {
-    setIsUp(!isUp);
-  };
-
   const sendEmail = () => {
     if (form.current) {
-      setLoading(true);
       emailjs
         .sendForm(
-          "service_k408ils",
-          "template_7ejv90h",
+          import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
           form?.current,
-          "KnF1r6gPkXHuwM0Y_"
+          import.meta.env.VITE_APP_EMAILJS_USER_ID
         )
         .then(
           (result) => {
             catchSuccessSnackbar("Thanks for your message!");
-            setLoading(false);
             resetForm();
           },
           (error) => {
             catchErrorSnackbar("Something went wrong!");
-            setLoading(false);
           }
         );
-      setLoading(false);
     }
   };
 
@@ -102,17 +101,22 @@ const ContactForm = () => {
       className={classes.root}
       ref={formRef}
       onClick={(e) => e.stopPropagation()}
+      ml={matches ? -10 : 0}
     >
       <Typography className="roboto-bold watermark">Contact</Typography>
       <Box className="box-container">
         <form ref={form} onSubmit={handleSubmit}>
           <Grid container columnSpacing={2}>
-            <Grid item xl={12} pt={10}>
-              <Typography className="main-text">
-                Got a Web-Related Question,
-              </Typography>
-              <Typography className="main-text">A Brilliant Idea!</Typography>
-              <Typography className="sub-text">
+            <Grid item xs={12} sm={12} lg={12} pt={10}>
+              <Box display={matches ? "block" : "flex"}>
+                <Typography className="main-text">
+                  Got a Web-Related Question,{" "}
+                </Typography>
+                <Typography className="main-text" ml={matches ? 0 : 1}>
+                  A Brilliant Idea!
+                </Typography>
+              </Box>
+              <Typography className="sub-text2">
                 or just want to say{" "}
                 <span
                   style={{
@@ -127,7 +131,7 @@ const ContactForm = () => {
               </Typography>
               <Typography className="main-text">Drop me a line!</Typography>
             </Grid>
-            <Grid item xl={5}>
+            <Grid item xs={12} sm={6} lg={6}>
               <Typography className="field-label">Name</Typography>
               <TextField
                 size="small"
@@ -171,7 +175,7 @@ const ContactForm = () => {
                 sx={{ mb: 5 }}
               />
             </Grid>
-            <Grid item xl={7}>
+            <Grid item xs={12} sm={6} lg={6}>
               <Button
                 disableRipple
                 type="submit"

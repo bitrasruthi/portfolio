@@ -15,7 +15,7 @@ export const HeaderStyle = makeStyles<any>((theme) => ({
       zIndex: 1111,
     },
     "& .title-name": {
-      fontSize: 13,
+      fontSize: 15,
       color: "#fff",
       cursor: "pointer",
       textShadow: "2px 2px 4px rgba(255, 255, 255, 0.4)",
@@ -27,6 +27,7 @@ export const HeaderStyle = makeStyles<any>((theme) => ({
       height: 50,
       cursor: "pointer",
     },
+
     "& .app-bar": {
       background: "transparent",
       position: "absolute",
@@ -35,6 +36,7 @@ export const HeaderStyle = makeStyles<any>((theme) => ({
     "& .tool-bar": {
       flexGrow: 1,
       justifyContent: "center",
+      marginTop: 20,
     },
     "& .page-name": {
       textAlign: "center",
@@ -42,7 +44,7 @@ export const HeaderStyle = makeStyles<any>((theme) => ({
     },
     "& .menu-item": {
       width: 500,
-      background: "#20232f",
+      background: "#20232f !important",
       color: "#fff",
     },
     "& .web-box": {

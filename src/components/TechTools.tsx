@@ -1,17 +1,12 @@
-import {
-  Box,
-  LinearProgress,
-  Slider,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Box, Tooltip, Typography, useMediaQuery } from "@mui/material";
 import { TechToolsStyle } from "../styles/TechToolsStyles";
-import React from "react";
 
-interface Props {}
-
-const TechTools = ({}: Props) => {
+const TechTools = ({}) => {
   const classes = TechToolsStyle();
+  const matches = useMediaQuery(
+    (_theme: any) => _theme?.breakpoints?.down("lg") ?? "600"
+  );
+
   const handleMouseEnter = (e: any) => {
     const target = e.target as HTMLImageElement;
     target.style.transform = "translateY(5px)";
@@ -54,12 +49,12 @@ const TechTools = ({}: Props) => {
     <Box className={classes.root}>
       <Typography className="roboto-bold watermark">Tech Tools</Typography>
       <Box className="box-container">
-        <Box display="flex">
+        <Box display={matches ? "block" : "flex"} ml={matches ? 1 : 5}>
           <Typography className="title-text roboto-bold">Frontend:</Typography>
           {ToolImages.slice(0, 5).map((tool: any, index: number) => (
             <Tooltip
               key={index}
-              title={tool.score}
+              title={""}
               placement="top"
               classes={{ tooltip: classes.customTooltip }}
             >
@@ -81,7 +76,7 @@ const TechTools = ({}: Props) => {
         {/* 2 */}
         <Box display={"flex"}>
           {/* BE */}
-          <Box display="flex">
+          <Box display={matches ? "block" : "flex"} ml={matches ? 2 : 5}>
             <Typography className="title-text roboto-bold">Backend:</Typography>
             {ToolImages.slice(5, 7).map((tool: any) => (
               <Box className="tool-box">
@@ -99,7 +94,7 @@ const TechTools = ({}: Props) => {
             ))}
           </Box>
           {/* DB */}
-          <Box display="flex" ml={5}>
+          <Box display={matches ? "block" : "flex"} ml={matches ? 2 : 5}>
             <Typography className="title-text roboto-bold">DB:</Typography>
             {ToolImages.slice(7, 10).map((tool: any) => (
               <Box className="tool-box">
@@ -120,7 +115,7 @@ const TechTools = ({}: Props) => {
         {/* 3 */}
         <Box display={"flex"}>
           {/* VCS */}
-          <Box display="flex">
+          <Box display={matches ? "block" : "flex"} ml={matches ? 2 : 5}>
             <Typography className="title-text roboto-bold">VCS:</Typography>
             {ToolImages.slice(10, 12).map((tool: any) => (
               <Box className="tool-box">
@@ -138,7 +133,7 @@ const TechTools = ({}: Props) => {
             ))}
           </Box>
           {/* Design */}
-          <Box display="flex" ml={5}>
+          <Box display={matches ? "block" : "flex"} ml={matches ? 10 : 5}>
             <Typography className="title-text roboto-bold">Design:</Typography>
             {ToolImages.slice(12, 13).map((tool: any) => (
               <Box className="tool-box">
