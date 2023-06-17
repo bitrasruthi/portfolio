@@ -24,7 +24,7 @@ function App() {
   const matches = useMediaQuery(
     (_theme: any) => _theme?.breakpoints?.down("lg") ?? "600"
   );
-  const { loading, setLoading, color, setColor } = useCommonStates();
+  const { loading, setLoading, color } = useCommonStates();
 
   window.addEventListener("load", () => {
     setLoading(false);

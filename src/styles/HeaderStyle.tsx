@@ -1,5 +1,5 @@
 import { makeStyles } from "@mui/styles";
-export const HeaderStyle = makeStyles<any>((theme) => ({
+export const HeaderStyle = makeStyles<any>(() => ({
   root: {
     "& .saucer-img": {
       width: 50,

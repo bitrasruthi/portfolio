@@ -71,11 +71,11 @@ const ContactForm = () => {
           import.meta.env.VITE_APP_EMAILJS_USER_ID
         )
         .then(
-          (result) => {
+          () => {
             catchSuccessSnackbar("Thanks for your message!");
             resetForm();
           },
-          (error) => {
+          () => {
             catchErrorSnackbar("Something went wrong!");
           }
         );

@@ -1,3 +1,4 @@
+/// <reference path="../helpers/swiper.d.ts" />
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";

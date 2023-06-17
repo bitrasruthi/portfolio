@@ -37,7 +37,7 @@
     "react-spring": "^9.7.1",
     "react-text-transition": "^3.1.0",
     "save": "^2.9.0",
-    "swiper": "9.0.0",
+    "swiper": "^9.4.1",
     "tsparticles": "^2.10.1",
     "yup": "^0.32.11"
   },

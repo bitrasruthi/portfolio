@@ -5,7 +5,7 @@ import "./index.css";
 import { Box, ThemeProvider, styled } from "@mui/material";
 import { SnackbarProvider } from "notistack";
 import theme from "./styles/theme.tsx";
-import { BrowserRouter, Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 const StyledSnackbarProvider = styled(SnackbarProvider)`
   &.SnackbarItem-variantSuccess {
