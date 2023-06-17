@@ -84,7 +84,13 @@ export const ContactFormStyle = makeStyles<any>((theme) => ({
         fontSize: 15,
       },
       "& .send-btn": {
-        marginTop: 20,
+        marginTop: "16vh",
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      "& .send-btn": {
+        marginTop: -30,
+        marginLeft: 100,
       },
     },
   },
