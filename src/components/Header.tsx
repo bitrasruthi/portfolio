@@ -13,7 +13,7 @@ import {
 import React from "react";
 import { HeaderStyle } from "../styles/HeaderStyle";
 import { useNavigate } from "react-router-dom";
-import saucer from "../../public/images/saucer.png";
+import saucer from "../assets/images/saucer.png";
 
 const titles = [
   { name: "Home", scroll: 0 },

@@ -13,14 +13,13 @@ import {
 } from "@mui/material";
 import React from "react";
 import { MyWorkStyle } from "../styles/MyWorkStyles";
+import delta from "../assets/images/work/delta.jpg";
+import togs from "../assets/images/work/togs.jpg";
+import deltav2 from "../assets/images/work/deltav2.png";
+import togsv2 from "../assets/images/work/togsv2.png";
+import togsList from "../assets/images/work/togslist.png";
 
-const imgList = [
-  "/images/work/delta.jpg",
-  "/images/work/togs.jpg",
-  "/images/work/deltav2.png",
-  "/images/work/togsv2.png",
-  "/images/work/togslist.png",
-];
+const imgList = [delta, togs, deltav2, togsv2, togsList];
 
 export default function MyWork() {
   const [selectedImage, setSelectedImage] = React.useState("");

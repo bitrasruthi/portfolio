@@ -1,5 +1,18 @@
 import { Box, Tooltip, Typography, useMediaQuery } from "@mui/material";
 import { TechToolsStyle } from "../styles/TechToolsStyles";
+import atom from "../assets/images/atom.png";
+import JS from "../assets/images/js.png";
+import TS from "../assets/images/typescript.png";
+import CSS from "../assets/images/css-3.png";
+import HTML from "../assets/images/html-5.png";
+import cSharp from "../assets/images/c-sharp.png";
+import node from "../assets/images/node-js.png";
+import mySql from "../assets/images/mysql2.png";
+import heidi from "../assets/images/heidisql.jpg";
+import mongo from "../assets/images/mongodb-atlas.webp";
+import git from "../assets/images/git.png";
+import sourceTree from "../assets/images/sourcetree.png";
+import figma from "../assets/images/figma.png";
 
 const TechTools = ({}) => {
   const classes = TechToolsStyle();
@@ -18,31 +31,31 @@ const TechTools = ({}) => {
   };
 
   const ToolImages = [
-    { name: "React", imgUrl: "../public/images/atom.png", score: 80 },
-    { name: "Javascript", imgUrl: "../public/images/js.png", score: 70 },
+    { name: "React", imgUrl: atom, score: 80 },
+    { name: "Javascript", imgUrl: JS, score: 70 },
     {
       name: "Typescript",
-      imgUrl: "../public/images/typescript.png",
+      imgUrl: TS,
       score: 70,
     },
-    { name: "CSS", imgUrl: "../public/images/css-3.png", score: 20 },
-    { name: "HTML", imgUrl: "../public/images/html-5.png", score: 70 },
-    { name: "C#", imgUrl: "../public/images/c-sharp.png", score: 70 },
-    { name: "Node JS", imgUrl: "../public/images/node-js.png", score: 70 },
-    { name: "MySQL", imgUrl: "../public/images/mysql2.png", score: 70 },
-    { name: "HeidiSQL", imgUrl: "../public/images/heidisql.jpg", score: 70 },
+    { name: "CSS", imgUrl: CSS, score: 20 },
+    { name: "HTML", imgUrl: HTML, score: 70 },
+    { name: "C#", imgUrl: cSharp, score: 70 },
+    { name: "Node JS", imgUrl: node, score: 70 },
+    { name: "MySQL", imgUrl: mySql, score: 70 },
+    { name: "HeidiSQL", imgUrl: heidi, score: 70 },
     {
       name: "MongoDB",
-      imgUrl: "../public/images/mongodb-atlas.webp",
+      imgUrl: mongo,
       score: 70,
     },
-    { name: "Git", imgUrl: "../public/images/git.png", score: 70 },
+    { name: "Git", imgUrl: git, score: 70 },
     {
       name: "SourceTree",
-      imgUrl: "../public/images/sourcetree.png",
+      imgUrl: sourceTree,
       score: 70,
     },
-    { name: "Figma", imgUrl: "../public/images/figma.png", score: 70 },
+    { name: "Figma", imgUrl: figma, score: 70 },
   ];
 
   return (

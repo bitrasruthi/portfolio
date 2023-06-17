@@ -10,7 +10,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import emailjs from "@emailjs/browser";
-import paperPlane from "../../public/images/paper-plane.png";
+import paperPlane from "../assets/images/paper-plane.png";
 import { ContactFormStyle } from "../styles/ContactFormStyles";
 import useSnackbarService from "./SnackBar";
 
