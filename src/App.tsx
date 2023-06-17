@@ -24,11 +24,6 @@ function App() {
   const matches = useMediaQuery(
     (_theme: any) => _theme?.breakpoints?.down("lg") ?? "600"
   );
-  const { loading, setLoading, color } = useCommonStates();
-
-  window.addEventListener("load", () => {
-    setLoading(false);
-  });
 
   // ****************/
   React.useEffect(() => {
@@ -43,72 +38,61 @@ function App() {
         scrollLine.style.width = container.scrollLeft + "px";
       });
     }
-  }, [matches, loading]);
+  }, [matches]);
   //***************/
 
   return (
     <Box className={classes.root}>
-      {loading ? (
-        <RingLoader
-          color={color}
-          loading={loading}
-          cssOverride={override}
-          size={50}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-        />
-      ) : (
-        <div style={{ background: "#dfdfdf" }}>
-          <Parallax
-            className="container"
-            ref={parallax}
-            pages={4}
-            horizontal={matches ? false : true}
-          >
-            <Page
-              offset={0}
-              gradient={"pink"}
-              label={
-                <>
-                  <Stars id="ts1" />
-                  <Header parallaxRef={parallax} page={1} />
-                  <Intro />
-                </>
-              }
-            />
-            <Page
-              offset={1}
-              gradient="teal"
-              label={
-                <>
-                  <Header parallaxRef={parallax} page={2} />
-                  <TechTools />
-                </>
-              }
-            />
-            <Page
-              offset={2}
-              gradient="tomato"
-              label={
-                <>
-                  <Header parallaxRef={parallax} page={3} />
-                  <MyWork />
-                </>
-              }
-            />
-            <Page
-              offset={3}
-              gradient="purple"
-              label={
-                <>
-                  <Header parallaxRef={parallax} page={4} />
-                  <ContactForm />
-                </>
-              }
-            />
-          </Parallax>
-        </div>
-      )}
+      <div style={{ background: "#dfdfdf" }}>
+        <Parallax
+          className="container"
+          ref={parallax}
+          pages={4}
+          horizontal={matches ? false : true}
+        >
+          <Page
+            offset={0}
+            gradient={"pink"}
+            label={
+              <>
+                <Stars id="ts1" />
+                <Header parallaxRef={parallax} page={1} />
+                <Intro />
+              </>
+            }
+          />
+          <Page
+            offset={1}
+            gradient="teal"
+            label={
+              <>
+                <Header parallaxRef={parallax} page={2} />
+                <TechTools />
+              </>
+            }
+          />
+          <Page
+            offset={2}
+            gradient="tomato"
+            label={
+              <>
+                <Header parallaxRef={parallax} page={3} />
+                <MyWork />
+              </>
+            }
+          />
+          <Page
+            offset={3}
+            gradient="purple"
+            label={
+              <>
+                <Header parallaxRef={parallax} page={4} />
+                <ContactForm />
+              </>
+            }
+          />
+        </Parallax>
+      </div>
     </Box>
   );
 }
