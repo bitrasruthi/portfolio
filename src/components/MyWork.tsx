@@ -18,8 +18,9 @@ import togs from "../assets/images/work/togs.jpg";
 import deltav2 from "../assets/images/work/deltav2.png";
 import togsv2 from "../assets/images/work/togsv2.png";
 import togsList from "../assets/images/work/togslist.png";
+import grooveBox from "../assets/images/work/grooveBox.png";
 
-const imgList = [delta, togs, deltav2, togsv2, togsList];
+const imgList = [delta, togs, deltav2, togsv2, togsList, grooveBox];
 
 export default function MyWork() {
   const [selectedImage, setSelectedImage] = React.useState("");
@@ -62,7 +63,7 @@ export default function MyWork() {
                 }}
               >
                 <>
-                  <img src={img} />
+                  <img src={img} width={index == 5 ? "120%" : ""} />
                   <Typography fontSize={15} pt={1} pb={1}>
                     {index == 0
                       ? "Togs - E-Commerce"
@@ -70,6 +71,8 @@ export default function MyWork() {
                       ? "Delta Drive - Remodeling & Rental Branded Cars"
                       : index == 3
                       ? "Togs - E-Commerce - V2"
+                      : index == 5
+                      ? "Groove Box - Music Player"
                       : ""}
                   </Typography>
                 </>
