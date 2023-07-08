@@ -10,6 +10,7 @@ import {
   DialogContent,
   Typography,
   useMediaQuery,
+  Tooltip,
 } from "@mui/material";
 import React from "react";
 import { MyWorkStyle } from "../styles/MyWorkStyles";
@@ -19,8 +20,10 @@ import deltav2 from "../assets/images/work/deltav2.png";
 import togsv2 from "../assets/images/work/togsv2.png";
 import togsList from "../assets/images/work/togslist.png";
 import grooveBox from "../assets/images/work/grooveBox.png";
+import zenith from "../assets/images/work/zenith.png";
+import { Link } from "react-router-dom";
 
-const imgList = [delta, togs, deltav2, togsv2, togsList, grooveBox];
+const imgList = [delta, togs, togsList, grooveBox, zenith];
 
 export default function MyWork() {
   const [selectedImage, setSelectedImage] = React.useState("");
@@ -63,17 +66,26 @@ export default function MyWork() {
                 }}
               >
                 <>
-                  <img src={img} width={index == 5 ? "120%" : ""} />
+                  <img src={img} width={index === 3 ? "100%" : ""} />
                   <Typography fontSize={15} pt={1} pb={1}>
-                    {index == 0
-                      ? "Togs - E-Commerce"
-                      : index == 1
-                      ? "Delta Drive - Remodeling & Rental Branded Cars"
-                      : index == 3
-                      ? "Togs - E-Commerce - V2"
-                      : index == 5
-                      ? "Groove Box - Music Player"
-                      : ""}
+                    {index == 0 ? (
+                      "Togs - E-Commerce"
+                    ) : index == 1 ? (
+                      "Delta Drive - Remodeling & Rental Branded Cars"
+                    ) : index == 3 ? (
+                      "Groove Box - Music Player"
+                    ) : index == 4 ? (
+                      <Tooltip title={"Go to Zenith"} placement="right" arrow>
+                        <Link
+                          to="https://bitrasruthi.github.io/Zenith/"
+                          style={{ color: "white !important" }}
+                        >
+                          Zenith - Resort & Spa
+                        </Link>
+                      </Tooltip>
+                    ) : (
+                      ""
+                    )}
                   </Typography>
                 </>
               </SwiperSlide>
@@ -84,13 +96,22 @@ export default function MyWork() {
             {imgList?.map((img: string, index: number) => (
               <>
                 <Typography fontSize={15} pt={1} pb={1}>
-                  {index == 0
-                    ? "Togs - E-Commerce"
-                    : index == 1
-                    ? "Delta Drive - Remodeling & Rental Branded Cars"
-                    : index == 3
-                    ? "Togs - E-Commerce - V2"
-                    : ""}
+                  {index == 0 ? (
+                    "Togs - E-Commerce"
+                  ) : index == 1 ? (
+                    "Delta Drive - Remodeling & Rental Branded Cars"
+                  ) : index == 3 ? (
+                    "Groove Box - Music Player"
+                  ) : index == 4 ? (
+                    <Link
+                      to="https://bitrasruthi.github.io/Zenith/"
+                      style={{ color: "white !important" }}
+                    >
+                      Zenith - Resort & Spa
+                    </Link>
+                  ) : (
+                    ""
+                  )}
                 </Typography>
                 <img key={index} src={img} width={"100%"} height={"15%"} />
               </>
